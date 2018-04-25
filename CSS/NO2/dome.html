@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初步接触css2D变形</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+
+        }
+        .box{
+            margin-top:100px;
+            width:900px;
+            margin:200px auto;
+        }
+        .boxd{
+            width:100px;
+            height:100px;
+            box-sizing:border-box;
+            border:solid 1px #999;
+            background:#ddd;
+            text-align:center;
+            line-height:100px;
+            font-size:30px;
+            float:left;
+            margin-right:50px;
+          }
+        .boxd1{
+            transform:skewX(30deg)
+        }
+        .boxd2{
+            transform:scaleX(0.5);
+        }
+        .boxd3{
+            transform:rotateZ(45deg)
+        }
+        .boxd4{
+            transform:translate(10px,20px);
+        }
+        .boxd5{
+            transform:skewX(30deg) scaleX(0.5) rotateZ(45deg) translate(10px,20px);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="boxd boxd0">box0</div>
+    <div class="boxd boxd1">box1</div>
+    <div class="boxd boxd2">box2</div>
+    <div class="boxd boxd3">box3</div>
+    <div class="boxd boxd4">box4</div>
+    <div class="boxd boxd5">box5</div>
+</div>
+</body>
+</html>
