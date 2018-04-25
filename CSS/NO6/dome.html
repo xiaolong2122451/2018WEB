@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>利用CSS animation制作一个炫酷的slider</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        ul , ol {
+            list-style:none;
+        }
+        html , body , ul{
+            width:100%;
+            height:100%;
+            position:relative;
+            overflow:hidden;
+        }
+        ul{
+            z-index:1;
+        }
+        ul li{
+            width:100%;
+            height:100%;
+            position:absolute;
+            left:0px;
+            top:0px;
+        }
+        ul li:nth-of-type(1){
+            background:url("1.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        ul li:nth-of-type(2){
+            background:url("2.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        ul li:nth-of-type(3){
+            background:url("3.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        ul li:nth-of-type(4){
+            background:url("4.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        ul li:nth-of-type(5){
+            background:url("5.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        .ol{
+            width:100%;
+            position:absolute;
+            z-index:2;
+            height:130px;
+            bottom:0px;
+            left:0px;
+            text-align:center;
+        }
+        .ol:after{
+            content:"";
+            clear:btch;
+        }
+        .ol a{
+            width:150px;
+            height:100px;
+            margin-right:20px;
+            display:inline-block;
+            box-sizing:border-box;
+            border:solid 2px #333;
+            cursor:pointer;
+        }
+        .ol a:nth-of-type(1){
+            background:url("1.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        .ol a:nth-of-type(2){
+            background:url("2.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        .ol a:nth-of-type(3){
+            background:url("3.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        .ol a:nth-of-type(4){
+            background:url("4.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+        .ol a:nth-of-type(5){
+            background:url("5.jpg") no-repeat;
+            background-size:100% 100%;
+        }
+
+
+
+        /*第一个动画*/
+        ul li:nth-of-type(1).active{
+            animation:myMove1 0.5s 0s;
+            -webkit-animation:myMove1 0.5s 0s;
+        }
+        @keyframes myMove1{
+            0%{
+                left:-500px;
+            }
+            100%{
+                left:0px;
+            }
+        }
+        @-webkit-keyframes myMove1{
+            0%{
+                left:-500px;
+            }
+            100%{
+                left:0px;
+            }
+        }
+
+        /*第二个动画*/
+        ul li:nth-of-type(2).active{
+            animation:myMove2 0.5s 0s;
+            -webkit-animation:myMove2 0.5s 0s;
+        }
+        @keyframes myMove2{
+            0%{
+                top:300px;
+            }
+            100%{
+                top:0px;
+            }
+        }
+        @-webkit-keyframes myMove2{
+            0%{
+                top:300px;
+            }
+            100%{
+                top:0px;
+            }
+        }
+
+        /*第三个动画*/
+        ul li:nth-of-type(3).active{
+            animation:myMove3 1s 0s;
+            -webkit-animation:myMove3 1s 0s;
+        }
+        @keyframes myMove3{
+            0%{
+                transform:scale(0.1);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+        @-webkit-keyframes myMove3{
+            0%{
+                transform:scale(0.1);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+
+        /*第四个动画*/
+        ul li:nth-of-type(4).active{
+            animation:myMove4 1s 0s;
+            -webkit-animation:myMove4 1s 0s;
+        }
+        @keyframes myMove4{
+            0%{
+                transform:scale(2);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+        @-webkit-keyframes myMove4{
+            0%{
+                transform:scale(2);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+
+        /*第五个动画*/
+        ul li:nth-of-type(5).active{
+            animation:myMove5 0.7s 0s;
+            -webkit-animation:0myMove5 0.7s 0s;
+        }
+        @keyframes myMove5{
+            0%{
+                transform:rotate(-360deg) scale(0.1);
+            }
+            100%{
+                transform:rotate(0deg) scale(1);
+            }
+        }
+        @-webkit-keyframes myMove5{
+            0%{
+                transform:rotate(-360deg) scale(0.1);
+            }
+            100%{
+                transform:rotate(0deg) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<div class="ol">
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+</div>
+
+</body>
+<script>
+    var a = document.querySelectorAll('a');
+    var li = document.querySelectorAll('li');
+    var up = li[0] , b = 1;
+
+    for(var i=0; i<a.length; i++){
+        a[i].index = i;
+        a[i].onclick = function(){
+            up.className = '';
+            li[ this.index ].style.zIndex = b++;
+            li[ this.index ].className = 'active';
+            up = li[ this.index ];
+        }
+    }
+</script>
+</html>
